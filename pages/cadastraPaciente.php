@@ -79,10 +79,11 @@
 			<!-- Procedimento-->
 		  	<div class="form-group"><!--form-group-->
 		    	<label>Procedimento</label>
-		    	<select name="procedimento" class="form-control">
+		    	<select id="proced" name="procedimento" class="form-control">
 		    		<?php 
+			
 		    			foreach ($info as $key => $value) {?>
-		    				<option><?php echo $value['PROC_DESC']; $procedimentoId = $value['PROC_ID']?></option>	
+		    				<option value=<?php echo $value['PROC_ID'];?>><?php echo $value['PROC_DESC'];?></option>	
 		    				<?php
 		    		}?>
 		    	</select>
@@ -98,7 +99,7 @@
 						$info = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 						foreach ($info as $key => $value) {?>
-							<option><?php echo $value['PEND_DESC']; $pendenciaId = $value['ID']?></option>		
+							<option value=<?php echo $value['ID'];?>><?php echo $value['PEND_DESC'];?></option>		
 						<?php }
 		    		?>
 		    		</select><!--Concluido Pendencias-->
@@ -114,7 +115,7 @@
 						$info = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 						foreach ($info as $key => $value) {?>
-							<option><?php echo $value['MED_NOME']; $medicoId = $value['MED_ID'];?></option>		
+							<option value= <?php echo $value['MED_ID']?>><?php echo $value['MED_NOME'];?></option>		
 						<?php }
 		    		?>
 		    		</select><!--Concluido Pendencias-->
@@ -148,9 +149,12 @@
 				$dtNasc = $_POST['dtNasc'];
 				$cartaoSus = $_POST['cartaoSus'];
 				$obsPac = $_POST['obsPac'];
-
+				$procedimentoId = $_POST['procedimento'];
+				$pendenciaId = $_POST['pendencias'];
+				$medicoId = $_POST['medico'];
+				$dtProcedimento = $_POST['dtProcedimento'];
 				$sql = $pdo->prepare("INSERT INTO pac VALUES (null,?,?,?,?,?,?,?,?)");
-				$sql->execute(array($nomePac,$dtNasc,$cartaoSus,$procedimentoId,$pendenciaId,$medicoId,$dtNasc,$obsPac));
+				$sql->execute(array($nomePac,$dtNasc,$cartaoSus,$procedimentoId,$pendenciaId,$medicoId,$dtProcedimento,$obsPac));
 			}
 
 			if(isset($_POST['buscar'])){
@@ -158,6 +162,9 @@
 			}
 		
 			
+		?>
+
+		<?php 
 		?>
 
 </body>
