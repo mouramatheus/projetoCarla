@@ -48,7 +48,16 @@
           }
         }
        
-       }     
+       }    
+
+       /*
+          - Falta criar:
+            - Tela de busca paciente individual (update)
+              - Buscar pelo nome do paciente
+            - Criar status de inativo.
+
+
+       */ 
                 
         
     ?>
